@@ -1357,8 +1357,12 @@ void print_global_stats( void )
     fflush( stdout );
     fprintf( stderr, "\n" );
     fprintf( stderr, " %7d targets\n", num_hosts );
-    fprintf( stderr, " %7d alive\n", num_alive );
-    fprintf( stderr, " %7d unreachable\n" ,num_unreachable );
+#if 0 /*Origin*/
+	fprintf( stderr, " %7d alive\n", num_alive );
+#else /*KS.LEE :: Test String Added */
+	fprintf( stderr, " %7d Hey alive\n", num_alive );
+#endif 
+	fprintf( stderr, " %7d unreachable\n" ,num_unreachable );
     fprintf( stderr, " %7d unknown addresses\n", num_noaddress );
     fprintf( stderr, "\n" );
     fprintf( stderr, " %7d timeouts (waiting for response)\n", num_timeout );
@@ -1680,8 +1684,11 @@ int wait_for_reply(long wait_time)
             printf( "%s", h->host );
 
             if( verbose_flag )
-                printf( " is alive" );
-
+#if 0
+				printf( " is alive" );
+#else	/*KS.LEE 2014 2 17 :: Test String Added*/
+				printf( " alive : Remember -Just FUn" );
+#endif 
             if( elapsed_flag )
                 printf( " (%s ms)", sprint_tm( this_reply ) );
 #ifndef IPV6
